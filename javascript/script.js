@@ -37,3 +37,24 @@ function eventosperguntas(pergunta) {
 }
 
 perguntas.forEach(eventosperguntas);
+
+const galeria = document.querySelectorAll(".bicicleta-imagens img");
+const galeriacontainer = document.querySelector(".bicicleta-imagens");
+
+function trocarimagem(event) {
+  const img = event.currentTarget;
+  const media = matchMedia("(min-width: 1000px)").matches;
+  if (media) {
+    galeriacontainer.prepend(img);
+  }
+}
+
+function eventosgaleria(img) {
+  img.addEventListener("click", trocarimagem);
+}
+
+galeria.forEach(eventosgaleria);
+
+if (window.SimpleAnime) {
+  new SimpleAnime();
+}
