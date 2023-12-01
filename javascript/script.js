@@ -18,5 +18,22 @@ function ativarproduto(parametro) {
     elemento.checked = true;
   }
 }
-
 parametros.forEach(ativarproduto);
+
+const perguntas = document.querySelectorAll(".perguntas button");
+
+function ativarpergunta(event) {
+  const pergunta = event.currentTarget;
+  const controls = pergunta.getAttribute("aria-controls");
+  const resposta = document.getElementById(controls);
+
+  resposta.classList.toggle("ativa");
+  const ativa = resposta.classList.contains("ativa");
+  pergunta.setAttribute("aria-expanded", ativa);
+}
+
+function eventosperguntas(pergunta) {
+  pergunta.addEventListener("click", ativarpergunta);
+}
+
+perguntas.forEach(eventosperguntas);
